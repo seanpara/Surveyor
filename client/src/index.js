@@ -8,6 +8,8 @@ import { composeWithDevTools } from "redux-devtools-extension";
 
 import App from "./components/App";
 import reducers from "./reducers";
+import axios from "axios";
+window.axios = axios;
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -22,3 +24,5 @@ ReactDom.render(
   </Provider>,
   document.querySelector("#root")
 );
+
+//const survey = { title: "my title", subject: "my subject", body: "this is the body", recipients: "spara77@gmail.com" }
