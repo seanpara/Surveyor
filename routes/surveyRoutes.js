@@ -21,6 +21,16 @@ module.exports = app => {
 
     // Great place to send an email!
     const mailer = new Mailer(survey, surveyTemplate(survey));
-    mailer.send();
-  }); // end of app.post
+
+    try {
+      await mailer.send();
+      await survey.save();
+      req.user.credits -= 1;
+      const user = await req.user.save();
+
+      res.send(user);
+    } catch (err) {
+      res.status(422).send(err);
+    }
+  });
 }; // end of main function
