@@ -1,11 +1,28 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
+import { reduxForm, Field } from "redux-form";
+import SurveyField from "./SurveyField"
 
 class SurveyForm extends Component {
-  render() {
-    return(
-      <div>SurveyForm!</div> 
+  renderFields = () => {
+    return (
+      <div>
+        <Field type="text" name="title" component={SurveyField}/>
+      </div>
     )
+
+  }
+  render() {
+    return (
+      <div>
+        <form onSubmit={this.props.handleSubmit(values => console.log(values))}>
+          {this.renderFields()}
+          <button type="submit">Button</button>
+        </form>
+      </div>
+    );
   }
 }
 
-export default SurveyForm
+export default reduxForm({
+  form: "surveyForm"
+})(SurveyForm);
