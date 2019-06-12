@@ -4,6 +4,7 @@ import ReactDom from "react-dom";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware, compose } from "redux";
 import reduxThunk from "redux-thunk";
+// eslint-disable-next-line
 import { composeWithDevTools } from "redux-devtools-extension";
 
 import App from "./components/App";
